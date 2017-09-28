@@ -1,7 +1,11 @@
+import random
 def main():
   students = [
-    Student("Larsson", 37),
-    Student("BonJovi", 55),
+    Student("Larsson", "Halsted", 0, 1, 1, "Wukong", "top"),
+    Student("Desjardins", "Nate", 1, 30, 2, "Anivia", "mid"),
+    Student("Desalle", "Samson", 14, 2, 5, "Jhin", "adc"),
+    Student("Kreps", "Alex", 30, 15, 3, "Akali", "jungle"),
+    Student("Bonney", "Kent", 10, 4, 20, "Bard", "supp"),
   ]
 
   printHeader()
@@ -13,29 +17,50 @@ def main():
   elif selection == 2:
     pass
   else:
-    print "SELECTION NOT RECOGNIZED"
+    print ("SELECTION NOT RECOGNIZED")
 
 
 class Student:
-  def __init__(self, lastName, age):
-    self.lastName = lastName
-    self.age = age
-    self.firstName = "JOHN"
+  names = ['John','Halsted','Nate','Samson','Alex','Meme-Man','Garbage','Bob','Aatrox','Aaron','Peter','George','Kent','Jack','Billy','Mortimer','Rick','Carl','Alfred','Steven','Jerome','Jerimiah']
+  lNames = ['Bonjovi','Larsson','Desjardins','Dankness','Benson','McDepressed','Salad','Trashson','Stevenson','Weeabo','Namek','Salty','MacDonald','Tenderoni','Bonney','Kreps']
+  lanes = ['mid','adc', 'support', 'top','jungle']
+  mainChamps = ['Aatrox','Ahri','Akali','Alistar','Amumu','Anivia','Annie','Ashe','Aurelion Sol','Azir','Bard','Blitzcrank','Brand','Braum','Caitlyn','Camille','Cassiopeia','ChoGath','Corki','Darius','Diana','Dr Mundo','Draven','Ekko','Elise','Evelynn','Ezreal','Fiddlesticks','Fiora','Fizz','Galio','Gangplank','Garen','Gnar','Gragas','Graves','Hecarim','Heimerdinger','Illoai','Irelia','Ivern','Janna','Jarvan IV','Jax','Jayce','Jhin','Jinx','Kalista','Karma','Karthus','Kassadin','Katarina','Kayle','Kennen','KhaZix','Kindred','Kled','KogMaw','LeBlanc','Lee Sin','Leona','Lissandra','Lucian','Lulu','Lux','Malphite','Malzahar','Maokai','Master Yi','Miss Fortune','Mordekaiser','Morgana','Nami','Nasus','Nautilus','Nidalee','Nocturne','Nunu','Olaf','Orianna','Pantheon','Poppy','Quinn','Rammus','RekSai','Renekton','Rengar','Riven','Rumble','Ryze','Sejuani','Shaco','Shen','Shyvana','Singed','Sion','Sivir','Skarner','Sona','Soraka','Swain','Syndra','Tahm Kench','Taliyah','Talon','Taric','Teemo','Thresh','Thresh','Tristana','Trundle','Tryndamere','Twisted Fate','Twitch','Udyr','Urgot','Varus','Vayne','Veigar','VelKoz','Vi','Viktor','Vladimir','Volibear','Warwick','Wukong','Xerath','Xin Zhao','Yasuo','Yorick','Zac','Zed','Ziggs','Zilean','Zyra']
+  def __init__(self, lastName, firstName, K, D, A, mainChamp, lane):
+    self.assignRandomK()
+    self.assignRandomD()
+    self.assignRandomA()
+    self.randomFirstName()
+    self.randomLastName()
+    self.randomChampion()
+    self.randomLane()
 
-  def assignRandomName(self):
-    pass
+  def randomLane(self):
+     self.lane = random.choice(self.lanes)
 
-  def assignRandomAge(self):
-    self.age = random.randint(0,100)
+  def randomChampion(self):
+     self.mainChamp = random.choice(self.mainChamps)
+  
+  def assignRandomK(self):
+     self.K = random.randint(0,30)
+  def assignRandomD(self):
+     self.D = random.randint(0,30)
+  def assignRandomA(self):
+     self.A = random.randint(0,30)   
 
   def assignRandomWeight(self, isMetric):
     pass
 
   def assignRandomHeight(self, isMetric):
     pass
+  
+  def randomFirstName(self): 
+     self.firstName = random.choice(self.names) 
+  
+  def randomLastName(self):
+     self.lastName = random.choice(self.lNames)
 
 inputQuestions = [ 
-  "For STUDENTS BY AGE, type 0",
+  "For PLAYERS BY DEATHS, type 0",
   "For STUDENTS BY LAST NAME, type 1",
   "For STUDENTS BY FIRST NAME, type 3",
   "For SUM of STUDENT AGES type 4",
@@ -46,17 +71,16 @@ def getUserSelection():
   print (inputQuestions[0])
   print (inputQuestions[1])
   print (inputQuestions[2])
-  return input("Type selection and press enter:")
+  return int(input("Type selection and press enter: "))
 
 def printHeader():
     print("HEADER TEXT HERE")
 
 def printStudentsByAge(students):
   print ("----Students By Age-----")
-  sortStudents = sorted(students, key=lambda student: student.age)
-  for student in students:
-    print student.lastName + ", " + student.firstName + ", " + str(student.age)
-
+  sortStudents = sorted(students, key=lambda student: student.D)
+  for student in sortStudents:
+    print (student.lastName + ", " + student.firstName + ", " + str(student.K) + "/" + str(student.D) + "/" + str(student.A) + ", " + str(student.mainChamp) + ", " + str(student.lane))
 def printStudentsByLName(students):
   print ("----Students By -----")
 
