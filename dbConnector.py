@@ -19,9 +19,8 @@ def main():
         "values ('" + name +  "')")
     conn.execute(statement)
 
-  result = conn.execute("SELECT * FROM champ").fetchall()
+  champs = conn.execute("SELECT * FROM champ").fetchall()
   print(result)
-
 
 
 def createTables(metadata, conn):

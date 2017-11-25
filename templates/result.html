@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title>
+      League Random Champion Generator
+    </title>
+  </head>
+  <body>
+    <ul>
+    {% for champ in champs %}
+      <li>{{ champ[1] }}</li>
+    {% endfor %}
+    </ul>
+    <a href = "/"> Again</a> 
+  </body>
+</html>
